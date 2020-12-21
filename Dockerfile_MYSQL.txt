@@ -1,0 +1,93 @@
+directory tree 
+.
+├── bd
+│   ├── database.sql
+│   └── Dockerfile
+└── docker-compose.yml
+
+-------------------------------------------------------------------
+
+database.sql
+
+use data_base;
+
+create table grupo(
+idGrupo int not null primary key,
+nomeIntegrantes varchar(255) not null
+);
+
+insert into grupo values (1, "Brenda Gaio");
+insert into grupo values (2, "Hayana dos Santos");
+insert into grupo values (3, "Iohana Linhares");
+insert into grupo values (4, "Lavinia Kuhn");
+
+-------------------------------------------------------------------
+
+docker-compose.yml
+version: '3'
+
+volumes:
+        db_data: {}
+
+services:
+    db:
+        build:
+            context: .
+            dockerfile: ./bd/Dockerfile
+            args:
+                - database=data_base
+                - password=123
+        image: trabalho1
+        volumes:
+            - db_data:/var/lib/mysql
+        ports:
+            - "3306:3306"
+
+
+--------------------------------------------------------------------
+
+Dockerfile
+
+# Utilizando como base uma imagem do MySQL 5.7.15
+FROM mysql:5.7.15
+
+# Obtendo os argumentos declarados no docker-compose.yml
+ARG database
+ARG password
+
+# Imprimindo os valores dos argumentos durante a costrucao da imagem
+RUN echo ${database}
+RUN echo ${password}
+
+# Definindo os argumentos obtidos como argumentos padrao do MySQL
+ENV MYSQL_DATABASE=${database} \
+    MYSQL_ROOT_PASSWORD=${password}
+
+# Executando o  para poluir o banco apos
+# a instalacao do MySQL
+ADD ./bd/database.sql /docker-entrypoint-initdb.d
+
+# Habilitando a porta 3306 (padrao do MySQL)
+EXPOSE 3306
+
+--------------------------------------------------------------------
+(dentro do bd)
+
+docker-compose down -v
+docker-compose up -d
+
+docker ps
+
+docker exec -it [containername] bash
+
+echo $MYSQL_ROOT_PASSWORD
+
+mysql -u root -p
+
+show databases;
+
+use data_base;
+
+show tables;
+
+select * from grupo;
