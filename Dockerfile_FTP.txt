@@ -1,0 +1,35 @@
+- sudo docker run -it --name servidor -p
+
+- sudo docker stop servidor
+
+- sudo mkdir trabalhoFtp
+	-ls
+- cd trabalho Ftp
+	-ls
+
+- touch Dockerfile
+
+- sudo touch Dockerfile
+
+- nano Dockerfile
+
+- sudo nano Dockerfile
+	- ls
+
+- sudo touch vsftpd.conf
+
+- sudo nano vsftpd.conf
+
+- sudo docker images
+
+- sudo docker rmi b1ca32191603
+
+- sudo docker images
+
+- sudo docker build -t ativftp .
+
+- sudo docker run -it --name servidor -p
+
+TELA PRETA
+
+- sudo docker stop servidor
