@@ -1,0 +1,10 @@
+nano .dockerignore
+
+node_modules
+npm-debug.log
+Dockerfile
+.dockerignore
+
+docker build -t nome_da_imagem .
+docker images
+docker run --name intranet -p 80:8080 -d nome_da_imagem
