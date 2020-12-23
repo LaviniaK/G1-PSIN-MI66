@@ -1,0 +1,20 @@
+mkdir views
+nano views/baseConhecimento.html
+
+nano views/email.html
+nano views/folhaConhecimento.html
+nano views/index.html
+nano views/login.html
+nano views/minhaConta.html
+nano views/ramal.html
+nano views/register.html
+nano views/servicos.html
+nano views/universidade.html
+
+mkdir views/css
+nano views/css/estilo.css
+
+ufw allow 8080
+
+node app.js
+http://ip_da_vm:8080
