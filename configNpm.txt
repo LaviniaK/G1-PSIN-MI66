@@ -1,0 +1,47 @@
+var router = express.Router();
+
+var path = __dirname + '/views/';
+const PORT = 8080;
+const HOST = '0.0.0.0';
+
+router.use(function (req,res,next) {
+  console.log("/" + req.method);
+  next();
+});
+router.get("/",function(req,res){
+  res.sendFile(path + "index.html");
+});
+router.get("/email",function(req,res){
+  res.sendFile(path + "email.html");
+});
+router.get("/servicos",function(req,res){
+  res.sendFile(path + "servicos.html");
+});
+router.get("/baseConhecimento",function(req,res){
+  res.sendFile(path + "baseConhecimento.html");
+});
+router.get("/folhaPagamento",function(req,res){
+  res.sendFile(path + "folhaPagamento.html");
+});
+router.get("/login",function(req,res){
+  res.sendFile(path + "login.html");
+});
+router.get("/minhaConta",function(req,res){
+  res.sendFile(path + "minhaConta.html");
+});
+router.get("/ramal",function(req,res){
+  res.sendFile(path + "ramal.html");
+});
+router.get("/register",function(req,res){
+  res.sendFile(path + "register.html");
+});
+router.get("/register",function(req,res){
+  res.sendFile(path + "universidade.html");
+});
+
+app.use(express.static(path));
+app.use("/", router);
+
+app.listen(8080, function () {
+  console.log('Example app listening on port 8080!')
+})
